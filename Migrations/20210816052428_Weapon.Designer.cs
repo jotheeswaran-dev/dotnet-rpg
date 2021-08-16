@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dotnet_rpg.Data;
 
 namespace dotnet_rpg.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210816052428_Weapon")]
+    partial class Weapon
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,13 +106,13 @@ namespace dotnet_rpg.Migrations
 
             modelBuilder.Entity("dotnet_rpg.Models.Weapon", b =>
                 {
-                    b.HasOne("dotnet_rpg.Models.Character", "Character")
+                    b.HasOne("dotnet_rpg.Models.Character", "character")
                         .WithOne("Weapon")
                         .HasForeignKey("dotnet_rpg.Models.Weapon", "CharacterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Character");
+                    b.Navigation("character");
                 });
 
             modelBuilder.Entity("dotnet_rpg.Models.Character", b =>
