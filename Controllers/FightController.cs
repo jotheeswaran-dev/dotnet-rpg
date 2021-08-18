@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using dotnet_rpg.Dtos.Fight;
 using dotnet_rpg.Models;
@@ -33,6 +34,12 @@ namespace dotnet_rpg.Controllers
         public async Task<ActionResult<ServiceResponse<FightResultDto>>> Fight(FightRequestDto request)
         {
             return Ok(await _fightService.Fight(request));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<ServiceResponse<List<HighScoreDto>>>> GetHighScore()
+        {
+            return Ok(await _fightService.GetHighScore());
         }
     }
 }
